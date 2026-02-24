@@ -65,17 +65,21 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                bat """
-                docker stop %CONTAINER_NAME% || exit 0
-                docker rm %CONTAINER_NAME% || exit 0
+    steps {
+        bat """
+        docker ps -a --format "{{.Names}}" | findstr %CONTAINER_NAME% >nul
+        if %errorlevel%==0 (
+            docker stop %CONTAINER_NAME%
+            docker rm %CONTAINER_NAME%
+        )
 
-                docker run -d ^
-                    --name %CONTAINER_NAME% ^
-                    -p 8501:8501 ^
-                    %IMAGE_NAME%:latest
-                """
-            }
+        docker run -d ^
+            --name %CONTAINER_NAME% ^
+            -p 8501:8501 ^
+            %IMAGE_NAME%:latest
+        """
+    }
+}
         }
 
         stage('Health Check') {
