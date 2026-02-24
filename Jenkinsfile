@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo '📥 Cloning repository...'
-                git branch: 'main', url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
+                git branch: 'main', url: 'https://github.com/SUDARSHAN-MANIKANDAN/MUSIC-RECOMMENDATION-SYSTEM.git'
             }
         }
 

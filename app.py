@@ -142,7 +142,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 if not os.path.exists("features.pkl"):
     st.markdown("""
     <div class="no-model-warning">
-        ⚠️  <strong>No trained model found.</strong><br><br>
+          <strong>No trained model found.</strong><br><br>
         Run the following command to train the model first:<br><br>
         <code>python train.py fma_small fma_metadata/tracks.csv</code><br><br>
         This will take ~3–6 minutes for 200 songs.
@@ -192,7 +192,7 @@ with col_left:
     top_n = st.slider("Number of recommendations", min_value=3, max_value=10, value=5)
 
 with col_right:
-    st.markdown("#### 🎼 Selected Track")
+    st.markdown("####  Selected Track")
     sel = next((r for r in records if r["title"] == selected_song), None)
     if sel:
         st.markdown(f"""
@@ -205,12 +205,12 @@ with col_right:
         if sel.get("path") and os.path.exists(sel["path"]):
             st.audio(sel["path"])
         else:
-            st.caption("🔇 Audio file not found at stored path")
+            st.caption(" Audio file not found at stored path")
 
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ── Recommend Button ──────────────────────────────────────────────────────────
-if st.button("🔍 Find Similar Songs", use_container_width=True):
+if st.button(" Find Similar Songs", use_container_width=True):
     with st.spinner("Analyzing audio features and finding matches..."):
         recs = get_recommendations(selected_song, top_n)
 
