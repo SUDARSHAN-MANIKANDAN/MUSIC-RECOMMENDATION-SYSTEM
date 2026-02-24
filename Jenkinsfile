@@ -80,7 +80,7 @@ pipeline {
         """
     }
 }
-        }
+        
 
         stage('Health Check') {
             steps {
@@ -97,3 +97,4 @@ pipeline {
             bat "docker image prune -f || exit 0"
         }
     }
+}
