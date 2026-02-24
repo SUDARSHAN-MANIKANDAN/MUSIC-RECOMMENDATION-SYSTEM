@@ -22,7 +22,7 @@ pipeline {
                 bat """
                 %PYTHON% -m pip install --upgrade pip
                 %PYTHON% -m pip install -r requirements.txt
-                %PYTHON% -m pip install pytest pytest-junitxml pytest-cov flake8
+                %PYTHON% -m pip install pytest pytest-cov flake8
                 """
             }
         }
